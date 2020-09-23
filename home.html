@@ -1,0 +1,16 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<div id="app" class="jumbotron">
+<input style="width:90%;" v-model="query" v-on:keyup.enter="location.href=link+query"><a :href="link+query" class="fas fa-search"></a>
+</div>
+<script>
+	var vue=new Vue({
+        el:"#app",
+		data:{
+			query:"",
+			link:document.URL.replace("home.html","")+"p.html?search=",
+		}
+
+	})
+</script>
