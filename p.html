@@ -1,6 +1,7 @@
 <!--<script src="vue.js"></script>-->
 <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<link rel="stylesheet" href="p.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <style>
@@ -9,6 +10,19 @@
         font-weight: bolder;
     }
     .title{
+        font-size:xx-large;
+    }
+   span{
+        font-size:large;
+    }
+    input{
+        width: 90%;
+        height:8%;
+        font-size:large;
+        border-radius: 50px
+
+    }
+    .infoBook{
         font-size:large;
     }
 </style>
@@ -16,7 +30,7 @@
 
     <div class=" text-center">
 
-        <input v-model="search" style="width: 90%" v-on:keyup.enter="location.href=value+'='+search"> <a :href="value+'='+search" class="fas fa-search"  >   </a> 
+        <input v-model="search"  v-on:keyup.enter="location.href=value+'='+search"> <a :href="value+'='+search" class="fas fa-search"  >   </a> 
        <!-- <button  @click="bo()" class="btn-primary">cerca</button>-->
       <!--  <select v-model="select">
 
@@ -46,24 +60,25 @@
                      <div class="col-md-10" >
 
                         <a :href="value+'='+item.volumeInfo.title" class=title>{{item.volumeInfo.title}}</a><br>
-                        <span v-for="autore in item.volumeInfo.authors">
+                        <span v-for="autore in item.volumeInfo.authors" class="authors">
                             <a :href="value+'='+autore">{{autore}}    </a>   
                         </span> <br>
                         <div>
                             
-                            <span> 
+                            <span class="col-2" v-if="item.saleInfo.pageCount!==undefined" > 
                                 numero pagine: {{item.volumeInfo.pageCount}} 
-                            </span><br>
-                            <span  v-if="item.saleInfo.listPrice!==undefined">
+                            </span>
+                            <span  v-if="item.saleInfo.listPrice!==undefined" class="col-2">
                                 prezzo: {{item.saleInfo.listPrice.amount}}  {{item.saleInfo.listPrice.currencyCode}}
                             </span><br>
-                            <button  v-if="item.volumeInfo.description!==undefined"class="btn-info col-4" @click="riassunto=!riassunto"> info </button>
+
+                            <button  v-if="item.volumeInfo.description!==undefined"class="btn-info" @click="riassunto=!riassunto">\/</button>
                         </div>
                        
                   
                     </div>
                 </div>
-                <div v-if="riassunto">
+                <div v-if="riassunto" class="infoBook">
                     {{item.volumeInfo.description}}
                 </div>
             </div>
