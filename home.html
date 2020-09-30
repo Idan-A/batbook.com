@@ -1,0 +1,17 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div id="app" class="jumbotron">
+<input style="width:95%; border-radius:50px; font-size: xx-large; height:8%;" v-model="query" v-on:keyup.enter="location.href=link+query">
+</div>
+
+<script>
+	var vue=new Vue({
+        el:"#app",
+		data:{
+			query:"",
+			link:document.URL.replace("home.html","")+"p.html?q=",
+		}
+
+	})
+</script>
