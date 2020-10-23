@@ -1,0 +1,85 @@
+<!--<script src="vue.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+<link rel="stylesheet" href="p.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<style>
+     a{
+        font-weight:bolder;
+        color:black;
+    }
+    .title{
+        font-size:xx-large;
+        color:black;
+    }
+   span{
+        font-size:large;
+    }
+    input,a{
+        width:90%;
+        height:8%;
+        font-size: x-large;
+        border-radius:50px;
+   }
+    .infoBook{
+        font-size:large;
+    }
+</style>
+<div id="app">
+
+    <div class=" text-center">
+
+        <input v-model="search"  v-on:keyup.enter="location.href=value+'='+search">
+
+    </div>
+
+    <div class="container-fluid">
+<libri inline-template v-for="item in json.items">
+     <div>
+                <div class="row">
+
+                
+                    <!--immagine-->
+                        <img class=" col-lg-2 col-4"  v-if="item.volumeInfo.imageLinks!==undefined" :src="item.volumeInfo.imageLinks.thumbnail">
+                        <div v-else> non img</div>
+                    
+                    <!--info libro-->
+                     <div class=" col-lg-10 col-8" >
+
+                        <a :href="value+'='+item.volumeInfo.title" class=title>{{item.volumeInfo.title}}</a><br>
+                        <span v-for="author in item.volumeInfo.authors" class="authors">
+                            <a :href="value+'='+author">{{author}}    </a>   
+                        </span> <br>
+                        <div>
+                            
+                            <span v-if="item.volumeInfo.pageCount!==undefined" > 
+                                numero pagine: {{item.volumeInfo.pageCount}} 
+                            </span><br>
+
+                            <span  v-if="item.saleInfo.listPrice!==undefined" >
+                                prezzo: {{item.saleInfo.listPrice.amount}}  {{item.saleInfo.listPrice.currencyCode}}
+                            </span><br>
+
+                            <span v-for="categoria in item.volumeInfo.categories" >
+                            {{categoria}}      
+                            </span> <br>
+                            
+                            <button  v-if="item.volumeInfo.description!==undefined" class="btn-primary col-lg-11 col-8" >\/</button>
+                        </div>
+                       
+                  
+                    </div>
+                </div>
+                <p v-if="riassunto" class="infoBook container" @click="riassunto=!riassunto">
+                    {{item.volumeInfo.description}}
+                </p>
+            </div>
+        </libri>
+    
+
+    </div>
+
+</div>
+<script type="text/javascript" src="p.js"></script>
