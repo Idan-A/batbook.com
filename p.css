@@ -3,18 +3,21 @@
         color:black;
     }
     .title{
-        font-size:xx-large;
         color:black;
+          font-weight:bolder;
     }
-   span{
-        font-size:large;
-    }
-    input{
+   /*span{
+        font-size:x-large;
+    }*/
+    .searchBar{
         width:90%;
         height:8%;
-        font-size: x-large;
+        font-size: xx-large;
         border-radius:50px;
    }
     .infoBook{
-        font-size:large;
+        font-size:x-large;
+    }
+    .info{
+        font-size:x-large;
     }

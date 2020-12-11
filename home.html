@@ -1,44 +1,19 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="p.css">
 <div id="app" >
 	<div class="jumbotron">
-<input style="width:95%; border-radius:50px; font-size: xx-large; height:8%;" v-model="query" v-on:keyup.enter="location.href=link+query">
-</div>
-<span class="h1">other links</span><br>
-<a :href="links.kobo+query">kobo</a><br>
- <a :href="links.openlibrary+query">openlibrary</a><br>
- <a :href="links.google+query">google</a><br>
- <a :href="links.audible[0]+query+links.audible[1]">audible</a><br>
-  <a :href="links.amazon[0]+query+links.amazon[1]">amazon books</a><br>
-   <a :href="links.kindle[0]+query+links.kindle[1]">amazon kindle</a><br>
-</div>
-<style>
-	span{
-	 font-weight:bolder;
-        color:black;
-         /*font-size:xxx-large;	*/
-	}
-	   a{
-	   	font-size:x-large;
-        font-weight:bolder;
-        color:black;
-    }
-</style>
+      <input style="width:95%; border-radius:50px; font-size: xx-large; height:8%; "  class="searchBar" placeholder="che libro hai bisogno?"v-model="query" v-on:keyup.enter="location.href=link+query">
+    </div>
+  
+
 <script>
 	var vue=new Vue({
         el:"#app",
 		data:{
 			query:document.getElementsByTagName("input")[0].value,
 			link:document.URL.replace(/home.html|home/,"")+"search.html?q=",
-			 links:{
-      kobo:"https://www.kobo.com/kb/kb/search?query=",
-      amazon:["https://www.amazon.com/s?k=","&i=stripbooks&__mk_it_IT=ÅMÅŽÕÑ&ref=nb_sb_noss"],
-      kindle:["https://www.amazon.com/s?k=","&i=digital-text&__mk_it_IT=ÅMÅŽÕÑ&ref=nb_sb_noss"],
-      audible:["https://www.audible.it/search?keywords=","&ref=a_search_t1_header_search"],
-      google:"https://www.google.com/search?tbm=bks&q=",
-      openlibrary:"https://openlibrary.org/search?q=",
-    }
+			
 		}
 
 	})
