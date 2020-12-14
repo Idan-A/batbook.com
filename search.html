@@ -57,7 +57,7 @@
             <p v-if="more=='backcover'" @click="more=''" class="infoBook container">
                  {{item.volumeInfo.description}}
             </p>
-            <p v-if="more=='buy'" @click="more=''" class="buy row">
+            <p v-if="more=='buy'" @click="more=''" class="h2 row">
                 <span class="col-lg-1"></span>
                 <span class="col-lg">
                     <a :href="links.amazonit+item.volumeInfo.industryIdentifiers[0].identifier">amazon</a>
