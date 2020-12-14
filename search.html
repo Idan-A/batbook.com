@@ -57,17 +57,21 @@
             <p v-if="more=='backcover'" @click="more=''" class="infoBook container">
                  {{item.volumeInfo.description}}
             </p>
-            <p v-if="more=='buy'" @click="more=''" class="infoBook container">
-
-                <span>
+            <p v-if="more=='buy'" @click="more=''" class="infoBook row">
+<span class="col-lg-1"></span>
+                <span class="col-lg">
                     <a :href="links.amazonit+item.volumeInfo.industryIdentifiers[0].identifier">amazon</a>
+                </span>
+                <br>
+                <span class="col-lg">
+                    <a :href="links.amazonKindle+item.volumeInfo.industryIdentifiers[0].identifier">kindle</a>
                 </span><br>
 
-                <span>
+                <span class="col-lg">
                     <a :href="item.volumeInfo.infoLink">google play</a>
                 </span><br>
 
-                <span>
+                <span class="col-lg">
                     <a  v-if="item.volumeInfo.industryIdentifiers[0].identifier.length==13":href="links.kobo+item.volumeInfo.industryIdentifiers[0].identifier">kobo</a> 
                     <a  v-else :href="links.kobo+item.volumeInfo.title">kobo</a>
                 </span><br>
